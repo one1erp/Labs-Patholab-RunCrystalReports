@@ -1,0 +1,73 @@
+﻿<UserControl  x:Class="RunCrystalReports.ReportsCtl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="900" FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <Style TargetType="ListBox">
+
+            <EventSetter Event ="SelectionChanged" Handler="lbReportsA_SelectionChanged_1"/>
+            <Setter Property="Margin" Value="12"></Setter>
+            <Setter Property="SelectionMode" Value="Single"></Setter>
+            <Setter Property="Grid.Row" Value="2"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="tbColTitle">
+            <Setter Property="Grid.Row" Value="1"></Setter>
+            <Setter Property="Margin" Value="3"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="90">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition  Height="auto"></RowDefinition>
+            <RowDefinition  Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock TextAlignment="Center" Grid.Column="1"  Text="מסך הרצת דוחות" FontWeight="Bold" TextDecorations="Underline" FontSize="24"/>
+
+        <TextBlock Text="A" Grid.Row="1" Style="{StaticResource tbColTitle}" ></TextBlock>
+        <TextBlock Text="B" Grid.Row="1" Grid.Column="1" Style="{StaticResource tbColTitle}" ></TextBlock>
+        <TextBlock Text="C" Grid.Row="1" Grid.Column="2" Style="{StaticResource tbColTitle}" ></TextBlock>
+        
+        <ListBox x:Name="lbReportsA"    ItemsSource="{Binding ReportsA}"  Grid.Column="0"/>
+        <ListBox x:Name="lbReportsB"   ItemsSource="{Binding ReportsB}"  Grid.Column="1"></ListBox>
+        <ListBox x:Name="lbReportsC"    ItemsSource="{Binding ReportsC}"  Grid.Column="2"></ListBox>
+        <Button Grid.Row="3" Grid.Column="0" Background="AliceBlue" Click="Button_Click_1">הפקת דוח</Button>
+        <Button Grid.Row="3" Grid.Column="1" Background="Yellow" Click="Button_Click_2">פתח דוח</Button>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"  Height="100" Orientation="Horizontal">
+
+
+            <StackPanel  x:Name="spLabels" >
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="0,10,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+            <StackPanel  
+                    x:Name="spParams">
+
+
+
+            </StackPanel>
+
+        </StackPanel>
+
+
+    </Grid>
+
+
+
+</UserControl>
